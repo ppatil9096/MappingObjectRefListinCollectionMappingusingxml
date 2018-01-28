@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31 Dec, 2017 12:22:36 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<class name="com.pravin.hibernate.Question" table="collection_mapping_objectref_list">
+		<id name="id">
+			<generator class="assigned" />
+		</id>
+		<property name="qname"></property>
+		<list name="answers" cascade="all">
+			<key>
+				<column name="qid" />
+			</key>
+			<index>
+				<column name="type"></column>
+			</index>
+			<one-to-many class="com.pravin.hibernate.Answer" />
+		</list>
+	</class>
+	<class name="com.pravin.hibernate.Answer" table="answers_objectref_list">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="givenAnswer"></property>
+		<property name="postBy"></property>
+	</class>
+</hibernate-mapping>
